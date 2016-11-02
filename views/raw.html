@@ -113,9 +113,15 @@
 
 <section class="fourth">
     <div class="block">
-        <h1 class="h2">The best part about me? I’m free and available.</h1>
-        <p class="price">24/7</p>
-        <a href="#" target="_blank" class="button modal-trigger">Get Started</a>
+        <h1 class="h2">Sign up to translate</h1>
+        <form action="/sms/consent" method="POST" id="phone_number_form">
+            <input type="email" class="email-address" placeholder="Email Address" name="email_address"/>
+            <input type="checkbox" name="english" value="English"/>
+            <input type="checkbox" name="arabic" value="Arabic"/>
+            <input type="tel" class="phone-number" placeholder="Mobile number" name="phone_number"/>
+            <input type="submit" class="submit" value="&#xf3fd;"/>
+        </form>
+        <!--  <a href="#" target="_blank" class="button modal-trigger">Get Started</a> -->
     </div>
     <h2 class="enjoy">Enjoy your <span id="weekday"></span> :)</h2>
     <div class="likely likely-big likely-light likely-footer" data-url="https://tarjim.ly" data-title="Tarjimly, friendly translator bot">
@@ -211,4 +217,3 @@
         });
     </script>
 </body>
-
