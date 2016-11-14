@@ -25,6 +25,7 @@
         <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tarjimlyTranslate/"/></noscript>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="/javascript/scripts.js"></script>
+    <script src="/javascript/facebookPlugin.js"></script>
 </head>
 
 <body>
@@ -113,16 +114,23 @@
 
 <section class="fourth">
     <div class="block">
+      <div class="form-div">
         <h1 class="h2">Sign up to translate</h1>
-        <form action="/sms/consent" method="POST" id="phone_number_form">
-            <input type="email" class="email-address" placeholder="Email Address" name="email_address"/>
-            <input type="checkbox" name="english" value="English"/>
-            <input type="checkbox" name="arabic" value="Arabic"/>
-            <input type="tel" class="phone-number" placeholder="Mobile number" name="phone_number"/>
-            <input type="submit" class="submit" value="&#xf3fd;"/>
+        <form action="/sms/consent" method="POST" id="translator-sign-up">
+            <input type="email" class="email-address" placeholder="Email Address" name="email_address"/> <br>
+              <label class="checkbox-label"> <input type="checkbox"  name="english" value="e"/> English </label> <br>
+              <label class="checkbox-label">  <input type="checkbox"  name="arabic" value="a"/> Arabic </label> <br>
+              <label class="checkbox-label"> <input type="checkbox"  name="farsi" value="f"/> Farsi </label> <br>
+            <input type="text" class= "country" name="country" placeholder="Country"/>
+
+            <!-- <input type="submit" class="submit show" value="&#xf3fd;"/> -->
         </form>
+        <div class="submit">
+          <div class="fb-send-to-messenger" messenger_app_id="1602801866685131" page_id="1656294344686221" data-ref="PASS_THROUGH_PARAM" color="white" size="xlarge"></div>
+        </div>
         <!--  <a href="#" target="_blank" class="button modal-trigger">Get Started</a> -->
     </div>
+  </div>
     <h2 class="enjoy">Enjoy your <span id="weekday"></span> :)</h2>
     <div class="likely likely-big likely-light likely-footer" data-url="https://tarjim.ly" data-title="Tarjimly, friendly translator bot">
         <div class="twitter">Tweet</div>
@@ -149,14 +157,33 @@
     var n = weekday[d.getDay()];
     document.getElementById("weekday").innerHTML = n;
 
+    function refresh_fb(){
+      window.fbAsyncInit = function() {
+        console.log("called correctly");
+        FB.init({
+          appId: "1602801866685131",
+          xfbml: true,
+          version: "v2.6"
+        });
+
+      };
+      console.log('refresh-fb');
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) { return; }
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    }
+
     $(document).ready(function(){
-        mixpanel.track_forms("#phone_number_form", "Submitted Phone Number");
+        mixpanel.track_forms("#translator-sign-up", "Submitted Form");
         $('.modal-trigger').click(function(e){
             e.preventDefault();
             $('.modal').addClass('modal-show');
             $('.overlay').addClass('overlay-show');
-            $('.phone-number').focus();
-            mixpanel.track("Opened Phone Number Modal");
+            mixpanel.track("Opened Translator Modal");
         });
         $('.modal-close, .overlay').click(function(e){
             e.preventDefault();
@@ -168,12 +195,18 @@
         $('.phone-number').mask('(000) 000-0000');
 
         // Show continue button after phone number is inputted
-        $('.phone-number').keyup(function () {
-            if ($(this).val().length > 13) {
-                $('.modal').addClass('with-button')
+        $('.country').keyup(function () {
+            //form is ready to be submitted
+            if ($(this).val().length > 0) {
+                $('.form-div').addClass('with-button')
                 $('.submit').addClass('show')
+                $('.fb-send-to-messenger').attr('data-ref','name: test, age: 22');
+
+
+                refresh_fb();
+
             } else {
-                $('.modal').removeClass('with-button')
+                $('.form-div').removeClass('with-button')
                 $('.submit').removeClass('show')
             }
         });

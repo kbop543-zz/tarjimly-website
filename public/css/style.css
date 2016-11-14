@@ -3474,7 +3474,7 @@ input {
     pointer-events: all
 }
 .with-button {
-    padding: 60px 60px 120px
+    padding: 0px 0px 60px
 }
 .modal-close {
     transition: all .4s cubic-bezier(.4, 2, .68, 1);
@@ -3496,9 +3496,9 @@ input {
 .modal-close:hover {
     transform: rotate(90deg)
 }
+
 input {
     border-bottom: 1px solid #fff;
-    -webkit-appearance: none;
     font-weight: 200;
     margin: 20px auto;
     -moz-appearance: none;
@@ -3508,6 +3508,17 @@ input {
     font-size: 24px;
     width: 80%
 }
+label {
+  width: 80%;
+  text-align: left;
+}
+label.checkbox-label input[type=checkbox]{
+    position: relative;
+    vertical-align: middle;
+    bottom: 1px;
+    width: 5%;
+}
+
 .submit {
     box-shadow: 0 20px 30px rgba(0, 0, 0, .08);
     background: rgba(255, 255, 255, .8);
