@@ -3404,7 +3404,7 @@ p {
 }
 
 section {
-    padding: 150px 0
+    padding: 160px 0
 }
 section.two {
     padding: 80px 0;
@@ -3417,8 +3417,15 @@ section.second {
 .container {
     max-width: 90%;
     margin: 0 auto;
-    width: 1100px
+    width: 900px
 }
+
+.containersmall {
+    max-width: 90%;
+    margin: 0 auto;
+    width: 750px
+}
+
 .button {
     -webkit-appearance: none;
     display: inline-block;
