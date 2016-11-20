@@ -26,9 +26,9 @@ app.get('/fb-button', function (req, res) {
       let turkish= req.query.turkish || 0;
       let timezone= req.query.timezone;
       let email= req.query.email;
-      let name = req.query.name;
-      email = email.replace('@','__');
-      res.render('fb-button', { title: 'Tarjimly-landing', formParam: 'n:'+name+'_a:'+arabic+'_e:'+english+'_fa:'+farsi+'_fr:'+french+'_g:'+greek+'_u:'+urdu+'_t:'+turkish+'_tz:'+timezone+'_m:'+email});
+      let username = req.query.username.replace(' ', '__'); //space with 2 underscores
+      email = email.replace('@','___'); //@ with 3 underscores
+      res.render('fb-button', { title: 'Tarjimly-landing', formParam: 'n:'+username+'_a:'+arabic+'_e:'+english+'_fa:'+farsi+'_fr:'+french+'_g:'+greek+'_u:'+urdu+'_t:'+turkish+'_tz:'+timezone+'_m:'+email});
 });
 
 app.get('/landing', function (req, res) {
