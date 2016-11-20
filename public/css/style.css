@@ -3331,7 +3331,7 @@ h2 {
 .h3,
 h3 {
     margin-top: 8px;
-    font-size: 16px
+    font-size: 24px
 }
 .answer,
 .p,
@@ -3523,19 +3523,36 @@ input {
     -moz-appearance: none;
     appearance: none;
     border-radius: 0;
-    padding: 24px 0;
-    font-size: 24px;
+    padding: 12px 0;
+    font-size: 20px;
     width: 80%
 }
 label {
   width: 80%;
   text-align: left;
+  font-size: 18px;
 }
 label.checkbox-label input[type=checkbox]{
     position: relative;
     vertical-align: middle;
     bottom: 1px;
     width: 5%;
+}
+
+select {
+  width: 80%;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #346bb4;
+  -webkit-transition: all ease .3s;
+  -o-transition: all ease .3s;
+  -moz-transition: all ease .3s;
+  -ms-transition: all ease .3s;
+  transition: all ease .3s;
 }
 
 .submit {
