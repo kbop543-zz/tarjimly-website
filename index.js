@@ -20,10 +20,14 @@ app.get('/fb-button', function (req, res) {
       let arabic= req.query.arabic || 0;
       let english= req.query.english || 0;
       let farsi= req.query.farsi || 0;
+      let french= req.query.french || 0;
+      let greek= req.query.greek || 0;
+      let urdu= req.query.urdu || 0;
+      let turkish= req.query.turkish || 0;
       let timezone= req.query.timezone;
       let email= req.query.email;
       email = email.replace('@','__');
-      res.render('fb-button', { title: 'Tarjimly-landing', formParam: 'a:'+arabic+'_e:'+english+'_f:'+farsi+'_tz:'+timezone+'_m:'+email});
+      res.render('fb-button', { title: 'Tarjimly-landing', formParam: 'a:'+arabic+'_e:'+english+'_fa:'+farsi+'_fr:'+french+'_g:'+greek+'_u:'+urdu+'_t:'+turkish+'_tz:'+timezone+'_m:'+email});
 });
 
 app.get('/landing', function (req, res) {
