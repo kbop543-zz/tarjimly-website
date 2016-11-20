@@ -17,11 +17,13 @@ app.get('/raw', function (req, res) {
 });
 
 app.get('/fb-button', function (req, res) {
-      let arabic= req.query.a;
-      let english= req.query.e;
+      let arabic= req.query.arabic || 0;
+      let english= req.query.english || 0;
+      let farsi= req.query.farsi || 0;
+      let timezone= req.query.timezone;
       let email= req.query.email;
-      email = email.replace('@','_');
-      res.render('fb-button', { title: 'Tarjimly-landing', formParam: 'a:'+arabic+'-e:'+english+'-m:'+email});
+      email = email.replace('@','__');
+      res.render('fb-button', { title: 'Tarjimly-landing', formParam: 'a:'+arabic+'_e:'+english+'_f:'+farsi+'_tz:'+timezone+'_m:'+email});
 });
 
 app.get('/landing', function (req, res) {
