@@ -6,6 +6,14 @@ window.fbAsyncInit = function() {
     version: "v2.6"
   });
 
+  FB.Event.subscribe('send_to_messenger', function(e) {
+  // callback for events triggered by the plugin
+
+  console.log('facebook sent event returned');
+  console.log(e);
+
+  });
+
 };
 
 (function(d, s, id){
